@@ -13,5 +13,10 @@ class PostController extends Controller
         // dd($posts);
         return view('posts/index')->with(['posts' => $post->getByLimit()]);
     }
+    
+    public function show(Post $post)
+    {
+        return view('posts/show')->with(['post' => $post]);
+    }
 }
 ?>
