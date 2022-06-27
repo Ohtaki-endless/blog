@@ -16,8 +16,23 @@
                         <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                     </h2>
                     <p class='body'>{{ $post->body }}</p>
+                    
+                    <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" data-id="{{ $post->id }}" onClick="deletePost();return false;">delete</button> 
+                    </form>
                 </div>
             @endforeach
         </div>
+        
+        <script>
+            function deletePost(e) {
+                'use strict';
+                if(confirm('削除すると復元できません。\n本当に削除しますか？')) {
+                    document.getElementById('form_' + e.dataset.id).submit();
+                }
+            }
+        </script>
     </body>
 </html>
