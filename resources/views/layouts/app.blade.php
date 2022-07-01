@@ -76,9 +76,15 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-md-8">
+                    @guest
+                    <h5>
+                        ようこそゲストさん！
+                    </h5>
+                    @else
                     <h5>
                         ようこそ{{Auth::user()->name}}さん！
                     </h5>
+                    @endguest
                     @yield('content')
                 </div>
               </div>

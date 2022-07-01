@@ -30,6 +30,21 @@
     @endforeach
 </div>
 
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">
+                teratail API で質問を表示
+            </div>
+            @foreach($questions as $question)
+                <div>
+                    <a href="https://teratail.com/questions/{{ $question['id'] }}">
+                        {{ $question['title'] }}
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+
 <script>
     function deletePost(e) {
         'use strict';
