@@ -33,7 +33,7 @@
     <div class="card">
         <div class="card-body">
             <div class="card-title">
-                teratail API で質問を表示
+                teratail API で質問を表示（Laravel応用 WEB API）
             </div>
             @foreach($questions as $question)
                 <div>
