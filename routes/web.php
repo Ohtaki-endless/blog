@@ -10,17 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/test', 'ReviewpostController@index');
+Route::get('/test/{post}', 'ReviewpostController@show');
+
+
 Route::get('/', 'PostController@index');
 Route::post('/posts', 'PostController@store');
 Route::get('/posts/create', 'PostController@create');
-
 Route::get('/posts/{post}', 'PostController@show');
-
 Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::get('/posts/{post}/role', 'PostController@role');
 Route::put('/posts/{post}', 'PostController@update');
-
 Route::delete('/posts/{post}', 'PostController@delete');
-
 Route::get('/categories/{category}', 'CategoryController@index');
 Auth::routes();
 
