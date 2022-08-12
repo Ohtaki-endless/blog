@@ -25,6 +25,11 @@
                     @method('DELETE')
                     <button class="btn btn-primary" type="submit" data-id="{{ $post->id }}" onClick="deletePost();return false;">delete</button> 
                 </form>
+                
+                <a href="/posts/{{ $post->id }}/role" class="btn btn-primary">
+                    完了
+                </a>
+                
             </div>
         </div>
     @endforeach

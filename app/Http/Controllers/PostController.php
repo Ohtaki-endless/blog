@@ -71,5 +71,15 @@ class PostController extends Controller
         return redirect('/');
     }
     
+    public function role(Post $post)
+    {
+        if($post->role === 1){
+            $post->where('id', $post->id)->update(['role' => 10]);
+        } else {
+            $post->where('id', $post->id)->update(['role' => 1]);
+        }
+        return back();
+    }
+    
 }
 ?>
