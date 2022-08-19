@@ -1,14 +1,19 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Reviewpost;
 use Illuminate\Http\Request;
 
 class ReviewpostController extends Controller
 {
-    public function index(Reviewpost $post) 
+    public function index(Reviewpost $post)
     {
-        return view('test.index')->with(['posts' => $post->get()]); 
+        // テストコメント
+        return view('test.index')->with(['posts' => $post->get()]);
+    }
+
+    public function show(Reviewpost $post)
+    {
+        return view('test.show')->with(['post' => $post]);
     }
 }
+?>
