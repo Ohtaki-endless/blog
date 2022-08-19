@@ -12,7 +12,7 @@ class ReviewpostController extends Controller
 
     public function show(Reviewpost $post)
     {
-        // 修正箇所
+        // 修正箇所1
         return view('test.show')->with(['post' => $post]);
     }
 }
