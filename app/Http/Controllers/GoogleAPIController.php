@@ -43,7 +43,7 @@ class GoogleAPIController extends Controller
             $items = $bodyArray['items'];
  
             // レスポンスの中身を見る
-            //dd($items);
+            // dd($items);
         }
         
         return view('google_api.book')->with([

@@ -33,13 +33,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="nav-item pt-3">
+                                <p>ようこそゲストさん！</p>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
@@ -49,6 +52,9 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item pt-3">
+                                <p>ようこそ{{Auth::user()->name}}さん！</p>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -76,15 +82,6 @@
             <div class="container">
               <div class="row justify-content-center">
                 <div class="col-md-10">
-                    @guest
-                    <h5>
-                        ようこそゲストさん！
-                    </h5>
-                    @else
-                    <h5>
-                        ようこそ{{Auth::user()->name}}さん！
-                    </h5>
-                    @endguest
                     @yield('content')
                 </div>
               </div>

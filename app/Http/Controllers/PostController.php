@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Category;
 use App\Http\Requests\PostRequest;
+use GuzzleHttp\Client;
 
 class PostController extends Controller
 {
@@ -35,10 +36,43 @@ class PostController extends Controller
         ]);
     }
     
+    
     public function show(Post $post)
     {
-        return view('posts/show')->with(['post' => $post]);
+        $image = null;
+        
+        // postsテーブルのtitleカラムに合致する書籍画像を検索する
+        if (!empty($post->title))
+        {
+            // 日本語で検索するためにURLエンコードする
+            $title = urlencode($post->title);
+ 
+            // APIを発行するURLを生成
+            $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $title . '&country=JP&tbm=bks';
+            
+            // Clientをインスタンス化
+            $client = new Client();
+ 
+            // GETでリクエスト実行
+            $response = $client->request("GET", $url);
+            $body = $response->getBody();
+            
+            // レスポンスのJSON形式を連想配列に変換
+            $bodyArray = json_decode($body, true);
+    
+            // 書籍情報の1つ目のみを取得
+            $item = $bodyArray['items'][0];
+            
+            //書籍情報から書籍画像部分を取得して変数に代入
+            $image = $item['volumeInfo']['imageLinks']['thumbnail'];
+        }
+        
+        return view('posts/show')->with([
+            'post' => $post,
+            'image' => $image    
+        ]);
     }
+    
     
     public function create(Category $category)
     {
