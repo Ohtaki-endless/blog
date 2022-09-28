@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/book', 'GoogleAPIController@book');
+Route::get('/map', 'GoogleAPIController@map');
+Route::get('/bookshow', 'GoogleAPIController@bookshow');
+
 Route::get('/test', 'ReviewpostController@index');
 Route::get('/test/{post}', 'ReviewpostController@show');
 
@@ -26,3 +30,7 @@ Route::get('/categories/{category}', 'CategoryController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+Route::post('/charge', 'ChargeController@charge');
